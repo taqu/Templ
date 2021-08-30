@@ -1,0 +1,10 @@
+baseURL = "https://templ.limelemon.com"
+languageCode = "ja"
+hasCJKLanguage = true
+pygmentsCodeFences = true
+rssLimit = 16
+summaryLength = 64
+enableRobotsTXT = true
+title = "Templ"
+theme = "mainroad"
+paginate = 10
