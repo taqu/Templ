@@ -1,0 +1,2 @@
+# Templ
+A hugo blog
