@@ -1,0 +1,6 @@
+{{ define "main" }}
+<h2>Archive: {{ .Title }}</h2>
+    {{- range .Data.Pages }}
+        {{- .Render "summary" }}
+    {{- end }}
+{{ end }}

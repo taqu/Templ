@@ -1,4 +1,4 @@
-baseURL = "https://templ.limelemon.com"
+baseURL = "https://limelemon.com"
 languageCode = "ja"
 hasCJKLanguage = true
 pygmentsCodeFences = true
@@ -8,3 +8,62 @@ enableRobotsTXT = true
 title = "Templ"
 theme = "mainroad"
 paginate = 10
+disqusShortname = "taqu"
+googleAnalytics = ""
+
+[Author]
+    name = "taqu"
+    bio = ""
+    avatar = "img/neko.jpg"
+
+[Params]
+    description = ""
+    opengraph = true
+    twitter_cards = false
+    readmore = false
+    authorbox = false
+    toc = false
+    pager = true
+    post_meta = ["date", "categories"]
+    mainSections = ["blog", "article"]
+    dateformat = "2006-01-02"
+    mathjax = false
+    mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js" # Specify MathJax path
+    mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config
+
+[Params.logo]
+    subtitle = ""
+
+[Params.sidebar]
+    home = "right"
+    list = "right"
+    single = "right"
+    widgets = ["recent", "categories", "taglist", "social", "archive"]
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    archive = "archives"
+
+[Params.widgets]
+    recent_num = 5
+    tags_counter = true
+
+[Params.widgets.social]
+    github = "taqu"
+    email = "taqu2920.dev@gmail"
+
+[[Menus.main]]
+Name = "Top"
+URL = "/"
+weight = 1
+
+[[Menus.main]]
+Name = "Blog"
+URL = "/blog/"
+weight = 2
+
+[[Menus.main]]
+Name = "Articles"
+URL = "/article/"
+weight = 3
