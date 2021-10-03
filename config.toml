@@ -1,4 +1,4 @@
-baseURL = "https://limelemon.com"
+baseURL = "https://white-cliff-0edb47500.azurestaticapps.net"
 languageCode = "ja"
 hasCJKLanguage = true
 pygmentsCodeFences = true
@@ -8,8 +8,8 @@ enableRobotsTXT = true
 title = "Templ"
 theme = "mainroad"
 paginate = 10
-disqusShortname = "taqu"
-googleAnalytics = ""
+# disqusShortname = "taqu"
+googleAnalytics = "G-TD6LMVD82W"
 
 [Author]
     name = "taqu"
@@ -67,3 +67,7 @@ weight = 2
 Name = "Articles"
 URL = "/article/"
 weight = 3
+
+[markup.goldmark.renderer]
+unsafe = true
+
