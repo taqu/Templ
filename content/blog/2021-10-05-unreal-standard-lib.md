@@ -5,7 +5,7 @@ archives:
     - 2021-10
 categories: ["blog"]
 tags: ["note", "unreal"]
-draft: true
+draft: false
 ---
 
 # コンパイルシステム
