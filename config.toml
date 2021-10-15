@@ -10,11 +10,10 @@ theme = "mainroad"
 paginate = 10
 # disqusShortname = "taqu"
 googleAnalytics = "G-TD6LMVD82W"
-
 [Author]
     name = "taqu"
     bio = ""
-    avatar = "img/neko.jpg"
+    avatar = "images/neko.jpg"
 
 [Params]
     description = ""
