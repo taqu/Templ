@@ -3,6 +3,8 @@ title: "FidelityFX Super Resolution について"
 date: 2021-10-15T00:00:00+09:00
 archives:
     - 2021-10
+categories: ["blog"]
+tags: ["note", "unreal"]
 draft: false
 ---
 # はじめに
