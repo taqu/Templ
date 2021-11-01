@@ -36,35 +36,36 @@ Unreal Engine4 (UE4) で, メインカメラとは別の視点から描画した
 ```cpp
 void USceneCaptureComponent2DEx::AddActorComponentsInLevel()
 {
-	QUICK_SCOPE_CYCLE_COUNTER(UCustomSceneCaptureComponent2D_AddActorComponentsInLevel);
-	UWorld* World = GetWorld();
-	if(nullptr == World){
-		return;
-	}
+{
+    QUICK_SCOPE_CYCLE_COUNTER(USceneCaptureComponent2DEx_AddActorComponentsInLevel);
+    UWorld* World = GetWorld();
+    if (nullptr == World) {
+        return;
+    }
 
     uint32 Count = 0;
     AActor* ActorClass = GetOwner();
     ULevel* Level = ActorClass->GetLevel();
-    for (TActorIterator<AActor> It(World, AActor::StaticClass(), EActorIteratorFlags::AllActors|EActorIteratorFlags::SkipPendingKill); It; ++It)
+    for (TActorIterator<AActor> It(World, AActor::StaticClass(), EActorIteratorFlags::AllActors | EActorIteratorFlags::SkipPendingKill); It; ++It)
     {
         AActor* Actor = *It;
-        if(Level != Actor->GetLevel()){
+        if (Level != Actor->GetLevel()) {
             continue;
         }
-        if(Actor != ActorClass){
+        if (Actor != ActorClass) {
             Actor->SetOwner(ActorClass);
         }
 
-		PrimitiveRenderMode = ESceneCapturePrimitiveRenderMode::PRM_UseShowOnlyList;
-		TInlineComponentArray<UPrimitiveComponent*> PrimitiveComponents(Actor, true);
-		for (UPrimitiveComponent* PrimComp : PrimitiveComponents)
-		{
-            PrimComp->bOnlyOwnerSee = true;
-			ShowOnlyComponents.Add(PrimComp);
+        PrimitiveRenderMode = ESceneCapturePrimitiveRenderMode::PRM_UseShowOnlyList;
+        TInlineComponentArray<UPrimitiveComponent*> PrimitiveComponents(Actor, true);
+        for (UPrimitiveComponent* PrimComp : PrimitiveComponents)
+        {
+            PrimComp->SetOnlyOwnerSee(true);
+            ShowOnlyComponents.Add(PrimComp);
             ++Count;
-		}
+        }
     }
-    if(0<Count){
+    if (0 < Count) {
         PrimitiveRenderMode = ESceneCapturePrimitiveRenderMode::PRM_UseShowOnlyList;
     }
 }
