@@ -5,7 +5,7 @@ archives:
     - 2021-11
 categories: ["blog"]
 tags: ["note", "unreal"]
-draft: true
+draft: false
 ---
 # はじめに
 Unreal Engine 4で, [Implicit SPMD Program Compiler](https://ispc.github.io/index.html) (ISPC)を使用してみます.
