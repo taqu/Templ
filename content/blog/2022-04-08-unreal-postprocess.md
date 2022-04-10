@@ -118,5 +118,5 @@ PostProcessingVolumeは最小でも次の処理をしています, この処理�
 - CustomStencilへステンシルをコピー
 
 # まとめ
-独自のパスを追加できるのですが, PostProcessingVolumeを再利用が難しいためオーバーヘッドが気になります.
+独自のパスを追加できるのですが, PostProcessingVolumeの再利用が難しいためオーバーヘッドが気になります.
 
