@@ -1,5 +1,5 @@
 ---
-title: "2022 10 02 Search vs Plugin00"
+title: "Visual Studio 全文検索拡張"
 date: 2022-10-09T00:00:00+09:00
 archives:
     - 2022-10
@@ -9,7 +9,7 @@ draft: false
 ---
 
 # はじめに
-数週間でとりあえず検索できるだけのVisual Studio用の全文検索拡張ができました. `Entrian Source Search`や`FastFind`をいった既存の拡張があるのは知っています. 
+数週間でとりあえず検索できるだけのVisual Studio用の全文検索拡張ができました. `Entrian Source Search`や`FastFind`といった既存の拡張があるのは知っています. 
 早期リリースを目標に不具合検証やユーザビリティは後回しです.
 
 - 高速な全文検索をVisual Studio上で行いたい
@@ -26,7 +26,6 @@ draft: false
 
 `Project`についても情報がないので, 有志の情報をもとに[ProjectTypes.cs](https://gist.github.com/taqu/5c14f5f99817cb73a9461b1a440af0f5.js")を作りました.
 
-
 # Lucene.Net
 研究段階では`groonga`も試してみたのですが, ドキュメントが皆無に等しいのとVisual Studio拡張にC/C++のDLLを組み込むのは少し手間なので断念しました.
 
@@ -37,6 +36,16 @@ DBに保存することにしました.
 C/C++のDLLが面倒くさい問題のため, `LevelDB`, `RocketDB`は候補から外しました. `Microsoft FARSTER`がよさそうですが, `Lucene.Net`と依存ライブラリで問題が出ました, これで一日消費しました.
 単純な`key-value`でいいのですが, 仕方がないので`LiteDB`を選択しました.
 
+## 索引付け
+索引付けは次のようにしました.
+
+1. 検索対象をソリューションファイルから収集
+   - ソリューションのアイテムをロックできないので, 処理中に変更操作があると何が起きるかわかりません
+2. 最後に調べたファイルの更新時刻と比較して, 索引付け候補を絞り込み
+   - 別にDBを用意しました
+3. Luceneの索引を行ごとに更新
+
+未解決の問題はプロジェクトが削除された場合にどうするかです.
 
 # パフォーマンス
 
