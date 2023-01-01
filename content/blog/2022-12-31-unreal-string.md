@@ -15,7 +15,7 @@ Unreal EngineのFStringについて, コピーの動作がどうなっている�
 
 ## 構造
 ここをみれば特性は把握できるので, わざわざ実験する必要もないのですが.
-`TArray`を利用しており, 固定サイズで容量が増加します.
+`TArray`を利用しており, 固定サイズで容量が増加します. `TArray`は`std::vector`と同じです. `trivially copyable`な型に対する最適化などはありません.
 
 ```cpp
 using AllocatorType = TSizedDefaultAllocator<32>;
@@ -26,7 +26,7 @@ DataType Data;
 ```
 
 ## コピー
-`TArray`の`ResizeForCopy`が呼び出されるだけで, `FMemory::Malloc`や`FMemory::Realloc`に行きつきます. `Small Size Optimization`などはとくにありません. 
+`TArray`の`ResizeForCopy`が呼び出されるだけで, `FMemory::Malloc`や`FMemory::Realloc`に行きつきます. `Small Size Optimization`などはとくにありません. 足りなければ領域を新たに確保しコピーします. 文字列なので`FMemory::Memcpy`で十分なのですが, ループでコピーコンストラクトします. 
 次のような簡単なテストでは`std::string`の方がパフォーマンスが良いです.
 
 ```cpp
