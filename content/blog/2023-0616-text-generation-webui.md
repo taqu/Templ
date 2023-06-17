@@ -5,7 +5,7 @@ archives:
     - 2023-06
 categories: ["blog"]
 tags: ["note", "ML"]
-draft: true
+draft: false
 ---
 # はじめに
 WSL環境に[text-generation-webui](https://github.com/oobabooga/text-generation-webui)をインストールしてみます.
@@ -22,7 +22,6 @@ DeepSpeedを使用する場合は次も必要.
 ```bash
 $ sudo apt install libaio-dev
 ```
-
 
 ## Conda
 
