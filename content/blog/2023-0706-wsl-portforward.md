@@ -1,30 +1,32 @@
 ---
-title: "WSL Portforwardと自動化"
+title: "WSL Portforwardingと自動化"
 date: 2023-07-06T00:00:00+09:00
 archives:
     - 2023-07
 categories: ["blog"]
 tags: ["note", "wsl"]
-draft: true
+draft: false
 ---
 
-#
+# はじめに
+WSLのサーバ等に外部からアクセスさせたいとき, Windowsのポートフォワーディングを設定する必要があります.
+WSLのインスタンスのIPアドレスは固定できないので, インスタンスを立ち上げたあと, 都度調べて設定する必要があります.
 
-参考:[WSL2のポートフォワードを自動化する](https://zenn.dev/fate_shelled/scraps/f6252654277ca0)
+# Portforwarding
 
-# 
-WSLのIPアドレスは起動ごとに変わる可能性があり, 固定する方法がないためWSL内で自分のIPアドレスを取得します.
-
-次のコマンドを`get_ipv4.bash`などに保存します.
-
+次のようなシェルスクリプトをWSL側に保存しておきます. ipコマンドからアドレスを切り出して, Windowsのnetsh.exeを呼び出してポートフォワーディングの設定をしています.
 ```bash
-ip -f inet -o addr show eth0|cut -d\  -f 7 | cut -d/ -f 1
+#!/bin/bash
+IP=$(ip address show eth0 | awk '/inet / {print $2}' | awk -F / '{print $1}')
+echo "own ip is " $IP
+netsh.exe interface portproxy delete v4tov4 listenport=9090
+netsh.exe interface portproxy add    v4tov4 listenport=9090 connectaddress=$IP
+echo "portforward done"
 ```
 
+Windows側からは次のように呼び出せば設定できます. 適当にスタートアップに設定するなどします.
 
-Windows側から次のようにすると指定ディストリビューションのコマンドを呼び出せます.
-
-```shell
-$ wsl -d distro -e bash /home/user/get_ipv4.bash
+```bash
+$ wsl -d debian -u root --exec /bin/bash /home/user/portforward.sh
 ```
 
