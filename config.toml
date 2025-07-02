@@ -1,5 +1,4 @@
 baseURL = "https://templ.limelemon.dev/"
-# baseURL = "https://white-cliff-0edb47500.azurestaticapps.net"
 languageCode = "ja"
 hasCJKLanguage = true
 pygmentsCodeFences = true
