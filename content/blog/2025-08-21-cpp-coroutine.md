@@ -5,7 +5,7 @@ archives:
     - 2025-08
 categories: ["blog"]
 tags: ["note", "C++"]
-draft: true
+draft: false
 ---
 
 # はじめに
