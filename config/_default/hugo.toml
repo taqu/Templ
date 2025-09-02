@@ -9,11 +9,9 @@ title = "Templ"
 theme = "mainroad"
 pagination.pageSize = 10
 
-[services.disqus]
-  shortname = "" # Enable Disqus by entering your Disqus shortname
-[services.googleAnalytics]
-  ID = "G-TD6LMVD82W" # Enable Google Analytics by entering your tracking ID
-  
+disqusShortname = "" # Enable Disqus comments by entering your Disqus shortname
+#googleAnalytics = "G-TD6LMVD82W" # Enable Google Analytics by entering your tracking ID 
+
 [Author]
     name = "taqu"
     bio = ""
