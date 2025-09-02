@@ -9,4 +9,5 @@ draft: true
 ---
 
 [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
+start from `\e[`, `\x1b[` or `\033`
 {{<figure src="/images/blog/ansi_escape00.jpg" alt="Local Multiplay">}}
