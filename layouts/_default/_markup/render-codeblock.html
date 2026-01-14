@@ -1,0 +1,12 @@
+<div>
+  {{- $filename := .Attributes.filename -}} {{- with $filename }}
+  <div class="codeblock--filename">{{ . }}</div>
+  <div class="codeblock--content">
+    {{- highlight ($.Inner | safeHTML) $.Type $.Options }}
+  </div>
+  {{ else }}
+  <div class="codeblock">
+    {{- highlight (.Inner | safeHTML) .Type .Options }}
+  </div>
+  {{ end }}
+</div>

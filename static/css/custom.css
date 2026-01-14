@@ -1,0 +1,15 @@
+.codeblock--content > div > pre {
+  margin-top: -26px;
+  padding-top: 40px;
+  padding-bottom: 12px;
+}
+.codeblock--filename {
+  display: inline-block;
+  position: relative;
+  padding: 2px 8px;
+  background-color: #e7e9eb;
+  color: #485a60;
+  font-size: 13px;
+  font-weight: 400;
+}
+
